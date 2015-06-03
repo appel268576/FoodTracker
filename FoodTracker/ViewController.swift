@@ -23,6 +23,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.hidesNavigationBarDuringPresentation = false
         
+        self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.width, 44.0)
+        
+        self.tableView.tableHeaderView = self.searchController.searchBar
+        
+        self.searchController.searchBar.delegate = self
+        self.definesPresentationContext = true
+        
     }
 
     override func didReceiveMemoryWarning() {
