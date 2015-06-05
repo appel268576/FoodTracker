@@ -14,6 +14,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var searchController:UISearchController!
     
+    var suggestedSearchFoods:[String] = []
+    var filteredSuggestedSearchFoods:[String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -30,6 +33,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.searchController.searchBar.delegate = self
         self.definesPresentationContext = true
         
+        self.suggestedSearchFoods = ["apple", "bagel", "banana", "beer", "bread", "carrots", "cheddar cheese", "chicken breast", "chili with beans", "chocolate chip cookie", "coffee", "cola", "corn", "egg", "graham cracker", "granola bar", "green beans", "ground beef patty", "hot dog", "ice cream", "jelly doughnut", "ketchup", "milk", "mixed nuts", "mustard", "oatmeal", "orange juice", "peanut butter", "pizza", "pork chop", "potato", "potato chips", "pretzels", "raisins", "ranch salad dressing", "red wine", "rice", "salsa", "shrimp", "spaghetti", "spaghetti sauce", "tuna", "white wine", "yellow cake"]
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +45,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Mark - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        
+        if self.searchController.active {
+            return self.filteredSuggestedSearchFoods.count
+        }
+        else {
+            return self.suggestedSearchFoods.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
