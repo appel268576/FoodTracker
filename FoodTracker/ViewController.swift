@@ -93,13 +93,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return foodMatch != nil
         })
     }
+    
+    // Mark UISearchBar Delegate
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        makeRequest(searchBar.text)
+    }
 
     func makeRequest(searchString: String) {
         
         let url = NSURL(string: "https://api.nutritionix.com/v1_1/search/\(searchString)?results=0%3A20&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=d4f19913&appKey=802eaaca238b9674f58ff489c23f9db5")
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
-            println(data)
+            var stringData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println(stringData)
             println(response)
         })
         task.resume()
