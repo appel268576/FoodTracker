@@ -75,6 +75,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // UISearchResultsUpdating Delegate
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         
+        let searchString = self.searchController.searchBar.text
+        let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
+        
+        self.filterContentForSearch(searchString, scope: selectedScopeButtonIndex)
+        self.tableView.reloadData()
+        
     }
     
     func filterContentForSearch(searchText: String, scope: Int) {
