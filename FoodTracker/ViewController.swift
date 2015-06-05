@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
 
-    @IBOutlet var tableView: UIView!
+    @IBOutlet var tableView: UITableView!
     
     var searchController:UISearchController!
     
