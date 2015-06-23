@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jNQ-An-oXL">
-                                <rect key="frame" x="-22" y="0.0" width="683" height="628"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jNQ-An-oXL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="HO8-s5-Kj9">
@@ -36,22 +36,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="jNQ-An-oXL" secondAttribute="trailing" constant="-77" id="7IZ-8E-jaq"/>
-                            <constraint firstItem="jNQ-An-oXL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-38" id="Quj-CB-Vdf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jNQ-An-oXL" secondAttribute="bottom" constant="-28" id="XCP-bB-JQZ"/>
-                            <constraint firstItem="jNQ-An-oXL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="gRt-we-EQg"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wOR-cT-NG5"/>
                     <connections>
-                        <outlet property="tableView" destination="8bC-Xf-vdC" id="iPu-jt-5ld"/>
+                        <outlet property="tableView" destination="jNQ-An-oXL" id="iWp-Iw-zqk"/>
                         <segue destination="ffV-fL-59g" kind="show" identifier="toDetailVCSegue" id="RyT-nw-zys"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="324"/>
+            <point key="canvasLocation" x="1055" y="324"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="IJ8-Sm-x4T">
