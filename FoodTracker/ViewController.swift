@@ -20,7 +20,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var suggestedSearchFoods:[String] = []
     var filteredSuggestedSearchFoods:[String] = []
     
+    var apiSearchForFoods:[(name: String, idValue: String)] = []
+    
     var scopeButtonTitles = ["Recommended", "Search Results", "Saved"]
+    
+    var jsonResponse:NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,11 +132,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, err) -> Void in
-            var stringData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println(stringData)
+//            var stringData = NSString(data: data, encoding: NSUTF8StringEncoding)
+//            println(stringData)
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
             println(jsonDictionary)
+            
+            if conversionError != nil {
+                println(conversionError!.localizedDescription)
+                let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error in parsing \(errorString)")
+            }
+            else {
+                if jsonDictionary != nil {
+                    self.jsonResponse = jsonDictionary!
+                    self.apiSearchForFoods = DataController.jsonAsUSDAIdAndNameSearchResults(jsonDictionary!)
+                }
+                else {
+                    println("Error could not parse JSON")
+                }
+            }
         })
         task.resume()
         
