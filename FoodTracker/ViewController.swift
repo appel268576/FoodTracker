@@ -57,11 +57,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if self.searchController.active {
-            return self.filteredSuggestedSearchFoods.count
+        let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
+        
+        if selectedScopeButtonIndex == 0 {
+            if self.searchController.active {
+                return self.filteredSuggestedSearchFoods.count
+            }
+            else {
+                return self.suggestedSearchFoods.count
+            }
+        }
+        else if selectedScopeButtonIndex == 1 {
+            return self.apiSearchForFoods.count
         }
         else {
-            return self.suggestedSearchFoods.count
+            return 0
         }
     }
     
@@ -70,12 +80,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         var foodName: String
         
-        if self.searchController.active {
-            foodName = self.filteredSuggestedSearchFoods[indexPath.row]
+        let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
+        
+        if selectedScopeButtonIndex == 0 {
+            if self.searchController.active {
+                foodName = self.filteredSuggestedSearchFoods[indexPath.row]
+            }
+            else {
+                foodName = self.suggestedSearchFoods[indexPath.row]
+            }
+        }
+        else if selectedScopeButtonIndex == 1 {
+            foodName = apiSearchForFoods[indexPath.row].name
         }
         else {
-            foodName = self.suggestedSearchFoods[indexPath.row]
+            foodName = ""
         }
+        
         
         cell.textLabel?.text = foodName
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
@@ -104,6 +125,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Mark UISearchBar Delegate
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.searchController.searchBar.selectedScopeButtonIndex = 1
+        
         makeRequest(searchBar.text)
     }
 
