@@ -160,6 +160,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         makeRequest(searchBar.text)
     }
+    
+    
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        self.tableView.reloadData()
+    }
+    
 
     func makeRequest(searchString: String) {
         
