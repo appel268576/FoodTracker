@@ -69,6 +69,15 @@ class DataController {
                         let entityDescription = NSEntityDescription.entityForName("USDAItem", inManagedObjectContext: managedObjectContext!)
                         let usdaItem = USDAItem(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
                         usdaItem.idValue = itemDictionary["_id"]! as! String
+                        usdaItem.dateAdded = NSDate()
+                        
+                        if itemDictionary["fields"] != nil {
+                            let fieldsDictionary = itemDictionary["fields"]! as! NSDictionary
+                            if fieldsDictionary["item_name"] != nil {
+                                usdaItem.name = fieldsDictionary["item_name"]! as! String
+                                
+                            }
+                        }
                     }
                 }
                 
