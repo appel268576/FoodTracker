@@ -130,6 +130,36 @@ class DataController {
                                 else {
                                     usdaItem.protein = "0"
                                 }
+                                
+                                // Save Sugar Value
+                                if usdaFieldsDictionary["SUGAR"] != nil {
+                                    let sugarDictionary = usdaFieldsDictionary["SUGAR"]! as! NSDictionary
+                                    let sugarValue: AnyObject = sugarDictionary["value"]!
+                                    usdaItem.sugar = "\(sugarValue)"
+                                }
+                                else {
+                                    usdaItem.sugar = "0"
+                                }
+                                
+                                // Save Vitamin C
+                                if usdaFieldsDictionary["VITC"] != nil {
+                                    let vitaminCDictionary = usdaFieldsDictionary["VITC"]! as! NSDictionary
+                                    let vitaminCValue: AnyObject = vitaminCDictionary["value"]!
+                                    usdaItem.vitaminC = "\(vitaminCValue)"
+                                }
+                                else {
+                                    usdaItem.vitaminC = "0"
+                                }
+                                
+                                // Energy
+                                if usdaFieldsDictionary["ENERC_KCAL"] != nil {
+                                    let energyDictionary = usdaFieldsDictionary["ENERC_KCAL"]! as! NSDictionary
+                                    let energyValue: AnyObject = energyDictionary["value"]!
+                                    usdaItem.energy = "\(energyValue)"
+                                }
+                                else {
+                                    usdaItem.energy = "0"
+                                }
                             }
                             
 
