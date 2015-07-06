@@ -80,6 +80,8 @@ class DataController {
                             
                             if fieldsDictionary["usda_fields"] != nil {
                                 let usdaFieldsDictionary = fieldsDictionary["usda_fields"]! as! NSDictionary
+                                
+                                // Save Calcium
                                 if usdaFieldsDictionary["CA"] != nil {
                                     let calciumDictionary = usdaFieldsDictionary["CA"]! as! NSDictionary
                                     let calciumValue: AnyObject = calciumDictionary["value"]!
@@ -88,8 +90,29 @@ class DataController {
                                 else {
                                     usdaItem.calcium = "0"
                                 }
+                                
+                                // Save Carbohydrate
+                                if usdaFieldsDictionary["CHODF"] != nil {
+                                    let carbohydrateDictionary = usdaFieldsDictionary["CHODF"]! as! NSDictionary
+                                    let carbohydrateValue: AnyObject = carbohydrateDictionary["value"]!
+                                    usdaItem.carbohydrate = "\(carbohydrateValue)"
+                                }
+                                else {
+                                    usdaItem.carbohydrate = "0"
+                                }
+                                
+                                // Save Fat
+                                if usdaFieldsDictionary["FAT"] != nil {
+                                    let fatDictionary = usdaFieldsDictionary["FAT"]! as! NSDictionary
+                                    let fatValue: AnyObject = fatDictionary["value"]!
+                                    usdaItem.fatTotal = "\(fatValue)"
+                                }
+                                else {
+                                    usdaItem.fatTotal = "0"
+                                }
                             }
                             
+
                         }
                     }
                 }
