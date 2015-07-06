@@ -19,6 +19,7 @@ class USDAItem: NSManagedObject {
     @NSManaged var energy: String
     @NSManaged var fatTotal: String
     @NSManaged var idValue: String
+    @NSManaged var name: String
     @NSManaged var protein: String
     @NSManaged var sugar: String
     @NSManaged var vitaminC: String
