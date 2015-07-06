@@ -110,6 +110,26 @@ class DataController {
                                 else {
                                     usdaItem.fatTotal = "0"
                                 }
+                                
+                                // Save Cholesterol
+                                if usdaFieldsDictionary["CHOLE"] != nil {
+                                    let cholesterolDictionary = usdaFieldsDictionary["CHOLE"]! as! NSDictionary
+                                    let cholesterolValue: AnyObject = cholesterolDictionary["value"]!
+                                    usdaItem.cholesterol = "\(cholesterolValue)"
+                                }
+                                else {
+                                    usdaItem.cholesterol = "0"
+                                }
+                                
+                                // Save ProteinValue
+                                if usdaFieldsDictionary["PROCNT"] != nil {
+                                    let proteinDictionary = usdaFieldsDictionary["PROCNT"]! as! NSDictionary
+                                    let proteinValue: AnyObject = proteinDictionary["value"]!
+                                    usdaItem.protein = "\(proteinValue)"
+                                }
+                                else {
+                                    usdaItem.protein = "0"
+                                }
                             }
                             
 
