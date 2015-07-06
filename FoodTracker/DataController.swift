@@ -160,6 +160,9 @@ class DataController {
                                 else {
                                     usdaItem.energy = "0"
                                 }
+                                
+                                (UIApplication.sharedApplication().delegate as! AppDelegate).saveContext()
+                                
                             }
                             
 
