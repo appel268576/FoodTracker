@@ -38,6 +38,8 @@ class DataController {
     }
     
     
+    
+    
     func saveUSDAItemForId(idValue: String, json: NSDictionary) {
         
         if json["hits"] != nil {
@@ -45,22 +47,19 @@ class DataController {
             
             for itemDictionary in results {
                 
-                if itemDictionary["_id"] != nil && itemDictionary["keyId"] as! String == idValue {
+                if itemDictionary["_id"] != nil && itemDictionary["_id"] as! String == idValue {
                     
                     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-                    
                     var requestForUSDAItem = NSFetchRequest(entityName: "USDAItem")
-                    
                     let itemDictionaryId = itemDictionary["_id"]! as! String
                     let predicate = NSPredicate(format: "idValue == %@", itemDictionaryId)
                     requestForUSDAItem.predicate = predicate
-                    
                     var error: NSError?
-                    
                     var items = managedObjectContext?.executeFetchRequest(requestForUSDAItem, error: &error)
                     
                     if items?.count != 0 {
                         // Item is already saved so pass
+                        println("The item was already saved")
                         return
                     }
                     else {
@@ -69,13 +68,12 @@ class DataController {
                         let entityDescription = NSEntityDescription.entityForName("USDAItem", inManagedObjectContext: managedObjectContext!)
                         let usdaItem = USDAItem(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!)
                         usdaItem.idValue = itemDictionary["_id"]! as! String
-                        usdaItem.dateAdded = NSDate()
                         
+                        usdaItem.dateAdded = NSDate()
                         if itemDictionary["fields"] != nil {
                             let fieldsDictionary = itemDictionary["fields"]! as! NSDictionary
                             if fieldsDictionary["item_name"] != nil {
                                 usdaItem.name = fieldsDictionary["item_name"]! as! String
-                                
                             }
                             
                             if fieldsDictionary["usda_fields"] != nil {
