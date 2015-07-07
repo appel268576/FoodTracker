@@ -22,6 +22,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var filteredSuggestedSearchFoods:[String] = []
     
     var apiSearchForFoods:[(name: String, idValue: String)] = []
+    var favoritedUSDAItems:[USDAItem] = []
+    var filteredFavoritedUSDAItems:[USDAItem] = []
+    
     
     var scopeButtonTitles = ["Recommended", "Search Results", "Saved"]
     
@@ -29,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var dataController = DataController()
     
-    var favoritedUSDAItems:[USDAItem] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,10 +156,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func filterContentForSearch(searchText: String, scope: Int) {
-        self.filteredSuggestedSearchFoods = self.suggestedSearchFoods.filter({ (food: String) -> Bool in
-            var foodMatch = food.rangeOfString(searchText)
-            return foodMatch != nil
-        })
+        if scope == 0 {
+            self.filteredSuggestedSearchFoods = self.suggestedSearchFoods.filter({ (food: String) -> Bool in
+                var foodMatch = food.rangeOfString(searchText)
+                return foodMatch != nil
+            })
+        }
+        else if scope == 2 {
+            self.filteredFavoritedUSDAItems = self.favoritedUSDAItems.filter({ (item: USDAItem) -> Bool in
+                var stringMatch = item.name.rangeOfString(searchText)
+                return stringMatch != nil
+            })
+        }
+        
+        
     }
     
     // Mark UISearchBar Delegate
