@@ -11,6 +11,8 @@ import UIKit
 class DetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
 
+    var usdaItem:USDAItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
