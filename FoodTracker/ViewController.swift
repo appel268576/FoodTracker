@@ -76,7 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return self.apiSearchForFoods.count
         }
         else {
-            return 0
+            return self.favoritedUSDAItems.count
         }
     }
     
@@ -99,7 +99,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             foodName = apiSearchForFoods[indexPath.row].name
         }
         else {
-            foodName = ""
+            foodName = self.favoritedUSDAItems[indexPath.row].name
         }
         
         
@@ -169,6 +169,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        
+        if selectedScope == 2 {
+            requestFavoritedUSDAItems()
+        }
+        
         self.tableView.reloadData()
     }
     
