@@ -79,7 +79,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return self.apiSearchForFoods.count
         }
         else {
-            return self.favoritedUSDAItems.count
+            if self.searchController.active {
+                return self.filteredFavoritedUSDAItems.count
+            }
+            else {
+                return self.favoritedUSDAItems.count
+            }
         }
     }
     
@@ -102,7 +107,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             foodName = apiSearchForFoods[indexPath.row].name
         }
         else {
-            foodName = self.favoritedUSDAItems[indexPath.row].name
+            if self.searchController.active {
+                foodName = self.filteredFavoritedUSDAItems[indexPath.row].name
+            }
+            else {
+                foodName = self.favoritedUSDAItems[indexPath.row].name
+            }
         }
         
         
