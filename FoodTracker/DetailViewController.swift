@@ -42,6 +42,30 @@ class DetailViewController: UIViewController {
     
     @IBAction func eatItBarButtonItemPressed(sender: UIBarButtonItem) {
     }
+    
+    func createAttributedString(usdaItem: USDAItem!) -> NSAttributedString {
+        
+        var itemAttributedString = NSMutableAttributedString()
+        
+        // Set the paragraph style
+        var centeredParagraphStyle = NSMutableParagraphStyle()
+        centeredParagraphStyle.alignment = NSTextAlignment.Center
+        centeredParagraphStyle.lineSpacing = 10.0
+        
+        // Apply the paragraph style
+        var titleAttributesDictionary = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont.boldSystemFontOfSize(22.0),
+            NSParagraphStyleAttributeName: centeredParagraphStyle
+        ]
+        
+        let titleString = NSAttributedString(string: "\(usdaItem.name)\n", attributes: titleAttributesDictionary)
+        
+        itemAttributedString.appendAttributedString(titleString)
+        
+        return itemAttributedString
+    }
+    
 
 
 }
