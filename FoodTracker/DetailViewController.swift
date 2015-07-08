@@ -13,10 +13,20 @@ class DetailViewController: UIViewController {
 
     var usdaItem:USDAItem?
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "usdaItemDidComplete:", name: kUSDAItemCompleted, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func notificationDidComplete(notification: NSNotification) {
+        usdaItem = notification.object as? USDAItem
     }
 
     override func didReceiveMemoryWarning() {
