@@ -23,6 +23,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if usdaItem != nil {
+            textView.attributedText = createAttributedString(usdaItem!)
+        }
     }
     
     deinit {
@@ -33,6 +37,10 @@ class DetailViewController: UIViewController {
         println("USDAItemDidComplete in DetailVC")
         
         usdaItem = notification.object as? USDAItem
+        
+        if self.isViewLoaded() && self.view.window != nil {
+            textView.attributedText = createAttributedString(usdaItem)
+        }
     }
 
     override func didReceiveMemoryWarning() {
