@@ -67,6 +67,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -292,6 +296,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func usdaItemDidComplete(notification: NSNotification) {
         
+        println("USDAItemDidComplete in ViewController")
         requestFavoritedUSDAItems()
         let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
         if selectedScopeButtonIndex == 2 {

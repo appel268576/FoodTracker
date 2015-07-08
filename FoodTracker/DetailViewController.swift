@@ -25,7 +25,13 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func notificationDidComplete(notification: NSNotification) {
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func usdaItemDidComplete(notification: NSNotification) {
+        println("USDAItemDidComplete in DetailVC")
+        
         usdaItem = notification.object as? USDAItem
     }
 
