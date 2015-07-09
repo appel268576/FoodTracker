@@ -71,6 +71,28 @@ class DetailViewController: UIViewController {
         
         itemAttributedString.appendAttributedString(titleString)
         
+        var leftAlignedParagraphStyle = NSMutableParagraphStyle()
+        leftAlignedParagraphStyle.alignment = NSTextAlignment.Left
+        leftAlignedParagraphStyle.lineSpacing = 20.0
+        
+        var styleFirstWordAttributesDictionary = [
+            NSForegroundColorAttributeName: UIColor.blackColor(),
+            NSFontAttributeName: UIFont.boldSystemFontOfSize(18.0),
+            NSParagraphStyleAttributeName: leftAlignedParagraphStyle
+        ]
+        
+        var style1AttributesDictionary = [
+            NSForegroundColorAttributeName: UIColor.darkGrayColor(),
+            NSFontAttributeName: UIFont.systemFontOfSize(18.0),
+            NSParagraphStyleAttributeName: leftAlignedParagraphStyle
+        ]
+        
+        var style2AttributeDictionary = [
+            NSForegroundColorAttributeName: UIColor.lightGrayColor(),
+            NSFontAttributeName: UIFont.systemFontOfSize(18.0),
+            NSParagraphStyleAttributeName: leftAlignedParagraphStyle
+        ]
+        
         return itemAttributedString
     }
     
