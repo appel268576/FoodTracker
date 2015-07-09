@@ -87,11 +87,31 @@ class DetailViewController: UIViewController {
             NSParagraphStyleAttributeName: leftAlignedParagraphStyle
         ]
         
-        var style2AttributeDictionary = [
+        var style2AttributesDictionary = [
             NSForegroundColorAttributeName: UIColor.lightGrayColor(),
             NSFontAttributeName: UIFont.systemFontOfSize(18.0),
             NSParagraphStyleAttributeName: leftAlignedParagraphStyle
         ]
+        
+        // Add styling attr to Calcium and append to itemAttributedString
+        let calciumTitleString = NSAttributedString(string: "Calcium ", attributes: styleFirstWordAttributesDictionary)
+        let calciumBodyString = NSAttributedString(string: "\(usdaItem.calcium)% \n", attributes: style1AttributesDictionary)
+        itemAttributedString.appendAttributedString(calciumTitleString)
+        itemAttributedString.appendAttributedString(calciumBodyString)
+        
+        // Carbohydrates
+        let carbohydrateTitleString = NSAttributedString(string: "Carbohydrates ", attributes: styleFirstWordAttributesDictionary)
+        let carbohydrateBodyString = NSAttributedString(string: "\(usdaItem.carbohydrate)% \n", attributes: style2AttributesDictionary)
+        itemAttributedString.appendAttributedString(carbohydrateTitleString)
+        itemAttributedString.appendAttributedString(carbohydrateBodyString)
+        
+        
+        // Cholesterol
+        let cholesterolTitleString = NSAttributedString(string: "Cholesterol ", attributes: styleFirstWordAttributesDictionary)
+        let cholesterolBodyString = NSAttributedString(string: "\(usdaItem.cholesterol) % \n", attributes: style1AttributesDictionary)
+        itemAttributedString.appendAttributedString(cholesterolTitleString)
+        itemAttributedString.appendAttributedString(cholesterolBodyString)
+        
         
         return itemAttributedString
     }
