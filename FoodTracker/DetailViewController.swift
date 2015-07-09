@@ -105,12 +105,29 @@ class DetailViewController: UIViewController {
         itemAttributedString.appendAttributedString(carbohydrateTitleString)
         itemAttributedString.appendAttributedString(carbohydrateBodyString)
         
-        
         // Cholesterol
         let cholesterolTitleString = NSAttributedString(string: "Cholesterol ", attributes: styleFirstWordAttributesDictionary)
-        let cholesterolBodyString = NSAttributedString(string: "\(usdaItem.cholesterol) % \n", attributes: style1AttributesDictionary)
+        let cholesterolBodyString = NSAttributedString(string: "\(usdaItem.cholesterol)% \n", attributes: style1AttributesDictionary)
         itemAttributedString.appendAttributedString(cholesterolTitleString)
         itemAttributedString.appendAttributedString(cholesterolBodyString)
+        
+        // Energy
+        let energyTitleString = NSAttributedString(string: "Energy ", attributes: styleFirstWordAttributesDictionary)
+        let energyBodyString = NSAttributedString(string: "\(usdaItem.energy)% \n", attributes: style2AttributesDictionary)
+        itemAttributedString.appendAttributedString(energyTitleString)
+        itemAttributedString.appendAttributedString(energyBodyString)
+        
+        // Fat
+        let fatTitleString = NSAttributedString(string: "Fat Total ", attributes: styleFirstWordAttributesDictionary)
+        let fatBodyString = NSAttributedString(string: "\(usdaItem.fatTotal)% \n", attributes: style1AttributesDictionary)
+        itemAttributedString.appendAttributedString(fatTitleString)
+        itemAttributedString.appendAttributedString(fatBodyString)
+        
+        // Protein
+        let proteinTitleString = NSAttributedString(string: "Protein ", attributes: styleFirstWordAttributesDictionary)
+        let proteinBodyString = NSAttributedString(string: "\(usdaItem.protein)% \n", attributes: style2AttributesDictionary)
+        itemAttributedString.appendAttributedString(proteinTitleString)
+        itemAttributedString.appendAttributedString(proteinBodyString)
         
         
         return itemAttributedString
